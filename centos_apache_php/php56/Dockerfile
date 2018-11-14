@@ -18,7 +18,7 @@ RUN yum -y install wget yum-utils && \
     wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm && \
     rpm -Uvh epel-release-6-8.noarch.rpm remi-release-6.rpm && \
     yum-config-manager --enable remi-php56 && \
-    yum -y install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo && \
+    yum -y install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo php-mbstring php-gettext php-xml && \
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
     cp /root/src/php.ini /etc/php.ini
 
