@@ -13,7 +13,7 @@ COPY ./copy_files /root/src
 WORKDIR /root/src
 
 # Install packages
-RUN yum -y install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo && \
+RUN yum -y install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo php-mbstring php-gettext php-xml && \
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
     cp /root/src/php.ini /etc/php.ini
 
