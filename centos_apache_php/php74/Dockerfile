@@ -17,11 +17,17 @@ RUN dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
     dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.rpm && \
     dnf -y module enable php:remi-7.4 && \
     dnf -y install php php-intl php-cli php-common \
-        php-mcrypt php-gd php-mysql php-ldap php-zip \
-        php-curl php-fileinfo php-gettext && \
+        php-mcrypt php-gd php-mysql php-ldap \
+        php-curl php-fileinfo php-gettext php-zip && \
     mkdir -p /var/run/php-fpm && \
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
     cp /root/src/php.ini /etc/php.ini
+RUN php -r "copy('https://getcomposer.org/installer', '/root/src/composer-setup.php');" && \
+    php -r "if (hash_file('sha384', '/root/src/composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/root/src/composer-setup.php'); } echo PHP_EOL;" && \
+    php /root/src/composer-setup.php && \
+    php -r "unlink('/root/src/composer-setup.php');" && \
+    mv /root/src/composer.phar /usr/local/bin/composer && \
+    chmod +x /usr/local/bin/composer
     
 
 # Configure
