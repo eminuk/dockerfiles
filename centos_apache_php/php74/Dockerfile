@@ -18,7 +18,7 @@ RUN dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
     dnf -y module enable php:remi-7.4 && \
     dnf -y install php php-intl php-cli php-common \
         php-mcrypt php-gd php-mysql php-ldap \
-        php-curl php-fileinfo php-gettext php-zip && \
+        php-curl php-fileinfo php-gettext php-zip php-grpc && \
     mkdir -p /var/run/php-fpm && \
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
     cp /root/src/php.ini /etc/php.ini
