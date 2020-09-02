@@ -23,7 +23,7 @@ RUN dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
     cp /root/src/php.ini /etc/php.ini
 RUN php -r "copy('https://getcomposer.org/installer', '/root/src/composer-setup.php');" && \
-    php -r "if (hash_file('sha384', '/root/src/composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/root/src/composer-setup.php'); } echo PHP_EOL;" && \
+    php -r "if (hash_file('sha384', '/root/src/composer-setup.php') === '8a6138e2a05a8c28539c9f0fb361159823655d7ad2deecb371b04a83966c61223adc522b0189079e3e9e277cd72b8897') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/root/src/composer-setup.php'); } echo PHP_EOL;" && \
     php /root/src/composer-setup.php && \
     php -r "unlink('/root/src/composer-setup.php');" && \
     mv /root/src/composer.phar /usr/local/bin/composer && \
