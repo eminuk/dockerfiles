@@ -16,8 +16,8 @@ WORKDIR /root/src
 RUN dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.rpm && \
     dnf -y module enable php:remi-7.4 && \
-    dnf -y install php php-intl php-cli php-common \
-        php-mcrypt php-gd php-mysql php-ldap \
+    dnf -y install php php-intl php-cli php-common php-mbstring \
+        php-mcrypt php-gd php-mysql php-ldap php-xml \
         php-curl php-fileinfo php-gettext php-zip php-grpc && \
     mkdir -p /var/run/php-fpm && \
     cp /root/src/httpd.conf /etc/httpd/conf/httpd.conf && \
